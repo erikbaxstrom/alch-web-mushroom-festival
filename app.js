@@ -116,7 +116,9 @@ function displayFriends() {
         friendEl.addEventListener('click', () => {
             // > handle the three possible outcomes:
             // 1. No mushrooms, set a message to go hunt for more
-
+            if (!mushrooms.length) {
+                message = 'No mushrooms. Time to go mushroom hunting.';
+            }
             // 2. Friend is already fully satisfied (3), set a message to pick another friend
             // 3. Feed friend mushroom:
             // a. "pop" a mushroom off the mushrooms array
