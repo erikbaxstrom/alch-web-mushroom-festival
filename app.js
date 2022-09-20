@@ -86,9 +86,6 @@ sayGoodbyeButton.addEventListener('click', () => {
     for (const friend of friends) {
         // > if the friend is not fully satisfied, push
         // them into the stillHungry array
-        if (friend.satisfied < 3) {
-            stillHungry.push(friend);
-        }
     }
     friends = stillHungry;
     displayFriends();
@@ -119,23 +116,14 @@ function displayFriends() {
         friendEl.addEventListener('click', () => {
             // > handle the three possible outcomes:
             // 1. No mushrooms, set a message to go hunt for more
-            if (!mushrooms.length) {
-                message = 'No mushrooms. Time to go mushroom hunting.';
-            } else {
-                // 2. Friend is already fully satisfied (3), set a message to pick another friend
-                if (friend.satisfied >= 3) {
-                    message = `${friend.name} is already satisfied. Choose a different friend.`;
-                } else {
-                    // 3. Feed friend mushroom:
-                    // a. "pop" a mushroom off the mushrooms array
-                    const mushroom = mushrooms.pop();
-                    // b. increase friend.satisfied by 1
-                    friend.satisfied++;
-                    // c. set a message that the friend enjoyed the mushroom,
-                    //    include the friend name and mushroom type in the message
-                    message = `${friend.name} enjoyed a ${mushroom.type}`;
-                }
-            }
+
+            // 2. Friend is already fully satisfied (3), set a message to pick another friend
+            // 3. Feed friend mushroom:
+            // a. "pop" a mushroom off the mushrooms array
+            // b. increase friend.satisfied by 1
+            // c. set a message that the friend enjoyed the mushroom,
+            //    include the friend name and mushroom type in the message
+
             displayMessage();
             displayMushrooms();
             displayFriends();
